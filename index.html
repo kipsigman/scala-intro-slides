@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+
+<title>TODO</title>
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<link rel="stylesheet" href="css/reveal.min.css">
+<link rel="stylesheet" href="css/theme/typesafe-training.css" id="theme">
+<link rel="stylesheet" href="lib/css/idea.css">
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+  if( window.location.search.match( /print-pdf/gi ) ) {
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = 'css/print/pdf.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  }
+</script>
+
+<!--[if lt IE 9]>
+<script src="lib/js/html5shiv.js"></script>
+<![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+<div class="slides">
+
+
+<!-- ########################################################################################### -->
+<!-- BEGIN
+<!-- ########################################################################################### -->
+
+<section data-markdown data-background="#53cdec" data-state="h2Uppercase"><script type="text/template">
+## Intro to Scala
+
+#### Scala SB, 5/22/2014
+
+#### Kip Sigman (Typesafe), Joe Zulli (Super Secret Startup)
+</script></section>
+
+<!-- ########################################################################################### -->
+
+<section data-markdown><script type="text/template">
+## Agenda
+
+- [Overview](#/overview) <!-- .element: class="agendaItem" -->
+- [Topic 1](#/topic1) <!-- .element: class="agendaItem" -->
+
+</script></section>
+
+<!-- ########################################################################################### -->
+<!-- Overview
+<!-- ########################################################################################### -->
+<section>
+
+<section id="overview" data-markdown data-background="#53cdec" data-state="h2Uppercase"><script type="text/template">
+## Overview
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Overview slide 1
+
+<blockquote>Blah blah blah.</blockquote>
+<small>Martin Odersky</small>
+
+- Bullet 1
+- Bullet 2
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Overview slide 2
+
+</script></section>
+
+</section>
+
+<!-- ########################################################################################### -->
+<!-- Topic 1
+<!-- ########################################################################################### -->
+<section>
+
+<section id="topic1" data-markdown data-background="#53cdec" data-state="h2Uppercase"><script type="text/template">
+## Topic 1
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Topic 1 slide 1
+
+</script></section>
+</section>
+
+<!-- ########################################################################################### -->
+<!-- END
+<!-- ########################################################################################### -->
+
+
+</div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+<script>
+
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+    maxScale: 2.0,
+
+    theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+    transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+    // Optional libraries used to extend on reveal.js
+    dependencies: [
+      { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: 'socket.io/socket.io.js', async: true },
+      { src: 'plugin/notes-server/client.js', async: true }
+    ]
+  });
+</script>
+
+</body>
+</html>
