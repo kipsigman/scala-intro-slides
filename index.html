@@ -14,6 +14,16 @@
 <link rel="stylesheet" href="css/theme/typesafe-training.css" id="theme">
 <link rel="stylesheet" href="lib/css/idea.css">
 
+<style>
+#logotable {
+  margin: auto;
+}
+#logotable td {
+  text-align: center;
+  vertical-align: middle;
+}
+</style>
+
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
   if( window.location.search.match( /print-pdf/gi ) ) {
@@ -54,83 +64,142 @@
 <section>
 
 <section id="overview" data-markdown data-background="#53cdec" data-state="h2Uppercase"><script type="text/template">
-## Overview
-
 ![Scala](images/scala-logo.jpeg "Scala")
 </script></section>
 
 <section data-markdown><script type="text/template">
-## History
+## When?
 
-- Scala began in 2001 at the [École Polytechnique Fédérale de Lausanne (EPFL)](http://en.wikipedia.org/wiki/%C3%89cole_Polytechnique_F%C3%A9d%C3%A9rale_de_Lausanne) under ownership of [Martin Odersky](http://en.wikipedia.org/wiki/Martin_Odersky).
-- First release in 2003 for the Java Platform.
-- Typesafe founded in 2011.
-- Current version: 2.11.0 (April, 2014)
+- 2001: Scala began at the [École Polytechnique Fédérale de Lausanne (EPFL)](http://en.wikipedia.org/wiki/%C3%89cole_Polytechnique_F%C3%A9d%C3%A9rale_de_Lausanne) under ownership of [Martin Odersky](http://en.wikipedia.org/wiki/Martin_Odersky).
+
+<img src="images/odersky-les-iterables.jpg" height="300"/>
 </script></section>
 
 <section data-markdown><script type="text/template">
-## Goals/Purpose
 
-- Language designed for [Reactive Programming](http://www.reactivemanifesto.org/).
-- Fix shortcomings of Java.
-- etc.
+<ul>
+    <li>2003: First experimental release.</li>
+    <li class="fragment">2005: Scala 2.0 written in Scala.</li>
+    <li class="fragment">2011: Typesafe founded.</li>
+    <li class="fragment">April 2014: Scala 2.11.0 released.</li>
+    
+  </ul>
+</script></section>
 
+
+<section data-markdown><script type="text/template">
+## What?
+
+- Hybrid language: Objected Oriented and Functional.
+- Runs on the JVM (like Clojure, Groovy, JRuby, etc).
+- Emphasizes declarative vs. imperative programming.
+
+</script></section>
+<section data-markdown><script type="text/template">
+## Why?
+
+- Reduced boilerplate.
+- Functional features leads to powerful APIs.
+- Great for "Reactive Programming" (http://www.reactivemanifesto.org/).
 
 </script></section>
 
 <section data-markdown><script type="text/template">
-## Companies using Scala
+## Who?
 
-#### Typesafe has logged 177 companies confirmed as using Scala and/or one of the Scala Frameworks.
+<table id="logotable" cellspacing="20" cellpadding="20">
+  <tr>
+    <td><img src="images/logos/twitter.png" width="120"/></td>
+    <td><img src="images/logos/coursera.png" width="120"/></td>
+    <td><img src="images/logos/linkedin.jpg" width="120"/></td>
+  </tr>
+  <tr>
+    <td><img src="images/logos/huffington-post.png" width="120"/></td>
+    <td><img src="images/logos/gilt.png" width="120"/></td>
+    <td><img src="images/logos/theguardian.jpg" width="120"/></td>
+  </tr>
+  <tr>
+    <td><img src="images/logos/ticketfly.png" width="120"/></td>
+    <td><img src="images/logos/walmart.png" width="120"/></td>
+    <td><img src="images/logos/klout.png" width="120"/></td>
+    
+  </tr>
+</table>
 
-- [Twitter](http://www.twitter.com)
-- [LinkedIn](http://www.linkedin.com)
-- [Coursera](http://www.coursera.com)
-- [GILT](http://www.gilt.com)
-
-See [Typesafe Case Studies](http://typesafe.com/company/casestudies) for more.
-
-</script></section>
-
-<section data-markdown><script type="text/template">
-## 10,000 ft view
-
-- Strongly typed but expressive.
-- Concise (eliminates boilerplate).
-- Functional Programming (FP) language.
-- Object Oriented (OO) language.
-- Built for concurrency and scaling.
+http://typesafe.com/company/casestudies
 
 </script></section>
 
 </section>
 
 <!-- ########################################################################################### -->
-<!-- Topic 1
+<!-- Language Basics
 <!-- ########################################################################################### -->
 <section>
 
-<section id="features" data-markdown data-background="#53cdec" data-state="h2Uppercase"><script type="text/template">
-## Features
+<section id="basics" data-markdown data-background="#53cdec" data-state="h2Uppercase"><script type="text/template">
+## Language Basics
 </script></section>
 
 <section data-markdown><script type="text/template">
-## Concise Language
-
-</script></section>
-
-<section data-markdown><script type="text/template">
-## Functional Programming
+## Basics 1
 
 </script></section>
 
 <section data-markdown><script type="text/template">
-## Object Oriented Programming
+## Basics 2
 
 </script></section>
 
+</section>
+
+<!-- ########################################################################################### -->
+<!-- Criticism
+<!-- ########################################################################################### -->
+<section id="criticism" data-markdown data-state="h2Uppercase"><script type="text/template">
+## Criticism
+  
+  <ul>
+    <li class="fragment">Compiler is a dog.</li>
+    <li class="fragment">Binary incompatibility between versions.</li>
+    <li class="fragment">Hard to read, hard to learn.</li>
+    <li class="fragment">Tools suck.</li>
+    <li class="fragment">Java 8 makes Scala unnecessary.</li>
+  </ul>
+
+</script></section>
+
+<!-- ########################################################################################### -->
+<!-- Next Steps
+<!-- ########################################################################################### -->
+<section>
+
+<section id="nextSteps" data-markdown data-background="#53cdec" data-state="h2Uppercase"><script type="text/template">
+## Next?
+</script></section>
+
 <section data-markdown><script type="text/template">
-## Scaling on JVM
+## Cool "advanced" features
+
+- Implicits & DSLs
+- Futures & Promises
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Frameworks
+
+<img src="images/play-logo.png" width="300"/>
+
+<img src="images/akka-logo.png" width="300"/>
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Resources
+
+- http://typesafe.com/activator
+- https://www.coursera.org/course/progfun
+- http://www.reactivemanifesto.org/
+- https://github.com/kipsigman/scala-intro-slides
 
 </script></section>
 
@@ -154,6 +223,7 @@ See [Typesafe Case Studies](http://typesafe.com/company/casestudies) for more.
     controls: true,
     progress: true,
     history: true,
+    
     center: true,
     maxScale: 2.0,
 
