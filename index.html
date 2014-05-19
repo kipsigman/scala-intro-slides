@@ -157,7 +157,7 @@ val name = "Joe"
 ## EVERYTHING is an Object
 ```scala
 5.toString
-res2: String = 5
+// res0: String = 5
 ```
 #### And I mean everything
 ```scala
@@ -197,19 +197,105 @@ case class Duration(seconds: Int) {
 ```
 </script></section>
 
+</section>
 
+<!-- ########################################################################################### -->
+<!-- OO Features
+<!-- ########################################################################################### -->
+<section>
+
+<section id="ooFeatures" data-markdown data-background="#53cdec" data-state="h2Uppercase"><script type="text/template">
+##OO features
+</script></section>
 <section data-markdown><script type="text/template">
-## Case Classes and Objects
+## Case Classes
 ```scala
-case class User(name: String, email: String, age: Int, password: String)
+case class User(name: String, email: String, age: Int)
 ```
+</script></section>
+<section data-markdown><script type="text/template">
+## Singletons
+```scala
+object UserService {
 
+  def findUserByName: Option[User] = ...
+}
+```
+</script></section>
+</section>
+
+<!-- ########################################################################################### -->
+<!-- FP Features
+<!-- ########################################################################################### -->
+<section>
+
+<section id="fpFeatures" data-markdown data-background="#53cdec" data-state="h2Uppercase"><script type="text/template">
+##Functional Programming Features
 </script></section>
 
 <section data-markdown><script type="text/template">
-## Basics 2
+## Higher Order Functions
+```scala
+case class User(name: String, age: Int)
 
+val users = User("Joe", 22) :: User("Bob", 43) ::
+            User("Kip", 56) :: Nil
+
+// can also be written val toName: User => String = _.name
+val toName: User => String = user => user.name
+
+val userNames: List[String] = users map toName
+
+// more concise syntax
+val userNames = users map (_.name)
+```
 </script></section>
+<section data-markdown><script type="text/template">
+## Options
+```scala
+def getUserFromDb(id: Int): User = // DB stuff
+
+val userMap = Map("Joe" -> 1, "Bob" -> 2, "Kip" -> 3)
+
+val bobsId: Option[Int] = userMap("Bob")// Some(Int) OR None
+
+val bob: Option[User] = bobsId map (getUserFromDb)
+```
+</script></section>
+<section data-markdown><script type="text/template">
+## Pattern matching
+```scala
+val bob: Option[User] = ....
+
+def printAge(user: Option[User]) = user match {
+
+  case None => println("No user here")
+  case Some(u) println(s"The age is: ${u.age}")
+}
+```
+</script></section>
+<section data-markdown><script type="text/template">
+## Pattern Matching Continued
+### Find Bob and return his age
+```scala
+case class User(name: String, age: Int)
+
+val users = User("Joe", 22) :: User("Bob", 43) ::
+            User("Kip", 56) :: Nil
+
+def getAge(name: String,
+           users: List[User]): Option[Int] = users match {
+
+  case Nil => None
+  case User(n, age) :: tail if n == name => Some(age)
+  case head :: tail => ageForName(name, tail)
+}
+getAge("Bob", users)
+//res0: Option[Int] = Some(43)
+```
+</script></section>
+
+
 
 </section>
 
