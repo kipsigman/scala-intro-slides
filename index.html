@@ -55,7 +55,7 @@
 
 #### Scala SB, 5/22/2014
 
-#### Kip Sigman (Typesafe), Joe Zulli (Stealth-mode Startup)
+#### Kip Sigman (Typesafe), Joe Zulli (Fmr: CTO @ Savings.com)
 </script></section>
 
 <!-- ########################################################################################### -->
@@ -175,7 +175,7 @@ def randomInt: Int = new Random().nextInt()
 ```
 </script></section>
 <section data-markdown><script type="text/template">
-## Symbolic Method Nnames
+## Symbolic Method Names
 ```scala
 case class Duration(seconds: Int) {
 
@@ -214,6 +214,30 @@ case class User(name: String, email: String, age: Int)
 ```
 </script></section>
 <section data-markdown><script type="text/template">
+## The Java Equivelent
+```java
+final class User {
+
+  final String name;
+  final String email;
+  final int age;
+
+  public User(String name, String email, int age) {
+
+    this.name = name;
+    this.email = email;
+    this.age = age
+  }
+
+  public String getName { return this.name; }
+  public String getEmail { return this.email; }
+  public int getAge { return this.age; }
+
+  // OPERATORS.....
+}
+    ```
+</script></section>
+<section data-markdown><script type="text/template">
 ## Singletons
 ```scala
 object UserService {
@@ -247,7 +271,7 @@ val toName: User => String = user => user.name
 val userNames: List[String] = users map toName
 
 // more concise syntax
-val userNames = users map (_.name)
+val userNames = users.map.(user => user.name)
 ```
 </script></section>
 <section data-markdown><script type="text/template">
@@ -257,9 +281,9 @@ def getUserFromDb(id: Int): User = // DB stuff
 
 val userMap = Map("Joe" -> 1, "Bob" -> 2, "Kip" -> 3)
 
-val bobsId: Option[Int] = userMap("Bob")// Some(Int) OR None
+val bobsId: Option[Int] = userMap.get("Bob")// Some(Int) OR None
 
-val bob: Option[User] = bobsId map (getUserFromDb)
+val bob: Option[User] = bobsId.map(getUserFromDb)
 ```
 </script></section>
 <section data-markdown><script type="text/template">
@@ -288,14 +312,77 @@ def getAge(name: String,
 
   case Nil => None
   case User(n, age) :: tail if n == name => Some(age)
-  case head :: tail => ageForName(name, tail)
+case head :: tail => getAge(name, tail)
 }
 getAge("Bob", users)
 //res0: Option[Int] = Some(43)
 ```
 </script></section>
+<section data-markdown><script type="text/template">
+## Collection Awesomeness
+```scala
+// get all users who are 25 years old or older
+val canRentCars = users.filter(u => u.age >= 25)
+// canRentCars: List[User] = List(User(Bob,43), User(Kip,56))
+```
+</script></section>
+<section data-markdown><script type="text/template">
+## More Collection Awesomeness
+```scala
+// divide the list into two sub-lists as determined
+// by whether the users are kids or adults
+val (kids, adults) = users.partition(u => u.age < 18)
+// kids: List[User] = List()
+// adults: List[User] = List(User(Joe,22), User(Bob,43), User(Kip,56))
+```
+</script></section>
+<section data-markdown><script type="text/template">
+## MOAR Collection Awesomeness
+```scala
+// partition, but what if the function is a
+// big expensive operation???
+val horriblySlowFunc = user => ...
+val (l1, l2) = users.par.partition(myFunc)
+```
+</script></section>
+<section data-markdown><script type="text/template">
+## Find Bob and Return his Age REDUX
+### What we had before
+```scala
+case class User(name: String, age: Int)
 
+val users = User("Joe", 22) :: User("Bob", 43) ::
+            User("Kip", 56) :: Nil
 
+def getAge(name: String,
+           users: List[User]): Option[Int] = users match {
+
+  case Nil => None
+  case User(n, age) :: tail if n == name => Some(age)
+  case head :: tail => getAge(name, tail)
+}
+getAge("Bob", users)
+//res0: Option[Int] = Some(43)
+```
+</script></section>
+<section data-markdown><script type="text/template">
+## Find Bob and Return his Age REDUX
+### But with Scala collections, you can easiliy do it in one line
+```scala
+case class User(name: String, age: Int)
+
+val users = User("Joe", 22) :: User("Bob", 43) ::
+            User("Kip", 56) :: Nil
+
+def getAge(name: String,
+           users: List[User]): Option[Int] = {
+
+  users.find(u => u.name == name).map(u => u.age)
+}
+getAge("Bob", users)
+//res0: Option[Int] = Some(43)
+```
+</script></section>
 
 </section>
 
