@@ -218,11 +218,11 @@ case class User(name: String, email: String, age: Int)
 ```java
 final class User {
 
-  final String name;
-  final String email;
-  final int age;
+  private final String name;
+  private final String email;
+  private final int age;
 
-  public User(String name, String email, int age) {
+  public User(final String name, final String email, final int age) {
 
     this.name = name;
     this.email = email;
@@ -278,13 +278,12 @@ object UserService {
 ```scala
 case class User(name: String, age: Int)
 
-val users = User("Joe", 22) :: User("Bob", 43) ::
-            User("Kip", 56) :: Nil
+val users: List[User] = User("Joe", 22) :: User("Bob", 43) :: User("Kip", 56) :: Nil
 
 // can also be written val toName: User => String = _.name
 val toName: User => String = user => user.name
 
-val userNames: List[String] = users map toName
+val userNames: List[String] = users.map(toName)
 
 // more concise syntax
 val userNames = users.map.(user => user.name)
@@ -308,7 +307,6 @@ val bob: Option[User] = bobsId.map(getUserFromDb)
 val bob: Option[User] = ....
 
 def printAge(user: Option[User]) = user match {
-
   case None => println("No user here")
   case Some(u) println(s"The age is: ${u.age}")
 }
@@ -320,7 +318,7 @@ def printAge(user: Option[User]) = user match {
 ```scala
 case class User(name: String, age: Int)
 
-val users = User("Joe", 22) :: User("Bob", 43) ::
+val users: List[User] = User("Joe", 22) :: User("Bob", 43) ::
             User("Kip", 56) :: Nil
 
 def getAge(name: String,
@@ -367,7 +365,7 @@ val (l1, l2) = users.par.partition(myFunc)
 ```scala
 case class User(name: String, age: Int)
 
-val users = User("Joe", 22) :: User("Bob", 43) ::
+val users: List[User] = User("Joe", 22) :: User("Bob", 43) ::
             User("Kip", 56) :: Nil
 
 def getAge(name: String,
@@ -387,7 +385,7 @@ getAge("Bob", users)
 ```scala
 case class User(name: String, age: Int)
 
-val users = User("Joe", 22) :: User("Bob", 43) ::
+val users: List[User] = User("Joe", 22) :: User("Bob", 43) ::
             User("Kip", 56) :: Nil
 
 def getAge(name: String,
