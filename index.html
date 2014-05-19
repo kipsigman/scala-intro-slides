@@ -233,7 +233,23 @@ final class User {
   public String getEmail { return this.email; }
   public int getAge { return this.age; }
 
-  // OPERATORS.....
+  public String toString() {
+
+    return "User(name=" + name + ",email=" + email + ",age=" + age + ")";
+  }
+
+  public boolean equals(User other) {
+
+    return this.name.equals(other.name) &&
+          this.email.equals(other.email) &&
+          this.age == other.age;
+  }
+
+  public int hashCode() {
+
+    // I don't remember how to do hash codes
+  }
+
 }
     ```
 </script></section>
