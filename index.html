@@ -294,7 +294,8 @@ object UserService {
 ```scala
 case class User(name: String, age: Int)
 
-val users: List[User] = User("Joe", 22) :: User("Bob", 43) :: User("Kip", 56) :: Nil
+val users: List[User] = User("Joe", 22) :: User("Bob", 43) ::
+                        User("Kip", 56) :: Nil
 
 // can also be written val toName: User => String = _.name
 val toName: User => String = user => user.name
@@ -312,7 +313,8 @@ def getUserFromDb(id: Int): User = // DB stuff
 
 val userMap = Map("Joe" -> 1, "Bob" -> 2, "Kip" -> 3)
 
-val bobsId: Option[Int] = userMap.get("Bob")// Some(Int) OR None
+val bobsId: Option[Int] = userMap.get("Bob")
+// Some(Int) OR None
 
 val bob: Option[User] = bobsId.map(getUserFromDb)
 ```
@@ -342,7 +344,7 @@ def getAge(name: String,
 
   case Nil => None
   case User(n, age) :: tail if n == name => Some(age)
-case head :: tail => getAge(name, tail)
+  case head :: tail => getAge(name, tail)
 }
 getAge("Bob", users)
 //res0: Option[Int] = Some(43)
