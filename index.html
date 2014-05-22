@@ -156,15 +156,31 @@ val name = "Joe"
 <section data-markdown><script type="text/template">
 ## EVERYTHING is an Object
 ```scala
-5.toString
-// res0: String = 5
+5.toString // res0: String = 5
 ```
 #### And I mean everything
 ```scala
 val add: (Int, Int) => Int = _ + _
-// add: (Int, Int) => Int = <function2>
-add.toString
-// res1: String = <function2>
+
+add.toString // res1: String = <function2>
+```
+</script></section>
+<section data-markdown><script type="text/template">
+## And... Everything is an Expression
+```scala
+val resultString = if(wasSuccessful) "Success" else "Failed"
+
+
+val otherResultString = try {
+  doSomething
+  "Success"
+} catch {
+
+  e: Exception => "Failed"
+}
+
+
+val list: Seq[String] = for (i <- 1 to 10) yield s"Hello %i"
 ```
 </script></section>
 <section data-markdown><script type="text/template">
