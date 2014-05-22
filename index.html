@@ -374,7 +374,7 @@ val (kids, adults) = users.partition(u => u.age < 18)
 // partition, but what if the function is a
 // big expensive operation???
 val horriblySlowFunc = user => ...
-val (l1, l2) = users.par.partition(myFunc)
+val (l1, l2) = users.par.partition(horriblySlowFunc)
 ```
 </script></section>
 <section data-markdown><script type="text/template">
