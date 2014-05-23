@@ -180,7 +180,7 @@ val otherResultString = try {
 }
 
 
-val list: Seq[String] = for (i <- 1 to 10) yield s"Hello %i"
+val list: Seq[String] = for (i <- 1 to 10) yield s"Hello $i"
 ```
 </script></section>
 <section data-markdown><script type="text/template">
@@ -230,7 +230,7 @@ case class User(name: String, email: String, age: Int)
 ```
 </script></section>
 <section data-markdown><script type="text/template">
-## The Java Equivelent
+## The Java Equivalent
 ```java
 final class User {
 
@@ -326,7 +326,7 @@ val bob: Option[User] = ....
 
 def printAge(user: Option[User]) = user match {
   case None => println("No user here")
-  case Some(u) println(s"The age is: ${u.age}")
+  case Some(u) => println(s"The age is: ${u.age}")
 }
 ```
 </script></section>
